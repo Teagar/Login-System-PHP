@@ -3,10 +3,16 @@ require_once "conn.php";
 
 session_start();
 
+// Verification
+if (!isset($_SESSION['logged'])) {
+  header('Location: index.php');
+}
+
 $id = $_SESSION['user_id'];
 $sql = "SELECT * FROM users WHERE id = '$id'";
 $result = mysqli_query($conn, $sql);
 $datas = mysqli_fetch_array($result);
+mysqli_close($conn);
 
 
 ?>

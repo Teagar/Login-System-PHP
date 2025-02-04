@@ -27,6 +27,7 @@ if ($isLoginFormSend) {
 
       if (mysqli_num_rows($result) === 1) {
 	$datas = mysqli_fetch_array($result);
+	mysqli_close($conn);
 	$_SESSION['logged'] = true;
 	$_SESSION['user_id'] = $datas['id'];
 	header('Location: home.php');
